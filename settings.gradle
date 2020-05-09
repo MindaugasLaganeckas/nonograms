@@ -1,0 +1,2 @@
+include 'com.nonograms.core'
+include 'com.nonograms.web'

@@ -10,19 +10,13 @@ buildscript {
 	}
 }
 
-apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-group = 'com.example'
 version = '1.0'
-sourceCompatibility = '1.8'
-
-repositories {
-	mavenCentral()
-}
 
 dependencies {
+	implementation project(':com.nonograms.core')
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'

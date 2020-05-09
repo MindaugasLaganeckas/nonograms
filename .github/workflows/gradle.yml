@@ -24,13 +24,5 @@ jobs:
         architecture: x64 # (x64 or x86) - defaults to x64
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-      working-directory: com.nonograms.core
     - name: Build with Gradle
       run: ./gradlew build
-      working-directory: com.nonograms.core
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-      working-directory: com.nonograms.web
-    - name: Build with Gradle
-      run: ./gradlew build
-      working-directory: com.nonograms.web
