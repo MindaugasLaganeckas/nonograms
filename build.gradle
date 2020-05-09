@@ -1,7 +1,7 @@
 apply plugin: 'base'
 subprojects {
     apply plugin: 'java-library'
-    sourceCompatibility = '11'
+    sourceCompatibility = '1.8'
     group = 'com.nonograms'
     repositories {
         mavenCentral()
