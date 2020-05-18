@@ -13,10 +13,10 @@ import java.io.IOException;
 public class Library {
 
   public static void main(String[] args) throws IOException {
-    BufferedImage img = ImageIO.read(new File("/home/vaida/Desktop/thum1bnail.jpeg"));
+    BufferedImage img = ImageIO.read(new File(args[0]));
     changeImage(img);
-    File outfile = new File("/home/vaida/Desktop/saved.jpg");
-    ImageIO.write(img, "jpg", outfile);
+    File outfile = new File(args[1]);
+    ImageIO.write(img, args[2], outfile);
   }
 
   public static void changeImage(BufferedImage img) {
