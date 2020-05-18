@@ -3,12 +3,17 @@
  */
 import com.nonograms.core.Library;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class LibraryTest {
   @Test
-  public void testSomeLibraryMethod() {
-    Library classUnderTest = new Library();
-    assertTrue("someLibraryMethod should return 'true'", true);
+  public void testSomeLibraryMethod() throws Exception {
+
+    Path currentRelativePath = Paths.get("");
+    String s = currentRelativePath.toAbsolutePath().toString();
+    System.out.println("Current relative path is: " + s);
+    
+    Library.main(new String[]{"src/test/resources/img.png", "src/test/resources/out.png", "png"});
   }
 }
