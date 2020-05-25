@@ -13,7 +13,12 @@ import java.util.ArrayList;
 public class Library {
 
     public static void main(String[] args) throws IOException {
-        BufferedImage img = ImageIO.read(new File("/home/vaida/Desktop/g_vinyl_1.jpg"));
+
+        final String input = args[0];
+        final String output = args[1];
+        final String extension = args[2];
+
+        BufferedImage img = ImageIO.read(new File(input));
         int numBlocksX = 35;
         int numBlocksY = 35;
         int[][] solution = changeImage(img, numBlocksX, numBlocksY);
@@ -21,22 +26,13 @@ public class Library {
         ArrayList<Integer>[] l = (ArrayList<Integer>[])new ArrayList[numBlocksY];
         Nonograms.createNonogram(solution,numBlocksX,numBlocksY,t,l);
         img = Nonograms.drawNonogram(t,l);
-        File outfile = new File("/home/vaida/Desktop/saved.jpg");
-        ImageIO.write(img, "jpg", outfile);
+        File outfile = new File(output);
+        ImageIO.write(img, extension, outfile);
         test();
     }
 
-    public static int[][] changeImage(BufferedImage img, int numBlocksX, int numBlocksY) {
-        //get image width and height
-        int width = img.getWidth();
-        int height = img.getHeight();
-        double blockSizeX = (double) width / numBlocksX;
-        double blockSizeY = (double) height/ numBlocksY;
-
-  public static void changeImage(BufferedImage img) {
+  public static int[][]  changeImage(BufferedImage img, final int numBlocksX, final int numBlocksY) {
     // get image width and height
-    int numBlocksX = 100;
-    int numBlocksY = 100;
     int width = img.getWidth();
     int height = img.getHeight();
     double blockSizeX = (double) width / numBlocksX;
@@ -83,8 +79,6 @@ public class Library {
         }
         return solution;
     }
-
-
 
     public static void test(){
         int[][] solution = new int[4][4];

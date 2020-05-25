@@ -14,6 +14,6 @@ public class LibraryTest {
     String s = currentRelativePath.toAbsolutePath().toString();
     System.out.println("Current relative path is: " + s);
     
-    Library.main(new String[]{"src/test/resources/img.png", "src/test/resources/out.png", "png"});
+    Library.main(new String[]{"src/test/resources/g_vinyl_1.jpg", "src/test/resources/out.jpg", "jpg"});
   }
 }

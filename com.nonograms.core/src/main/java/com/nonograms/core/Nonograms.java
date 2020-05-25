@@ -3,6 +3,7 @@ package com.nonograms.core;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Nonograms {
     public static void createNonogram(int[][] solution, int numBlocksX, int numBlocksY, ArrayList<Integer>[] topNumbers, ArrayList<Integer>[] leftNumbers){
@@ -42,15 +43,17 @@ public class Nonograms {
         }
     }
 
-    public static ArrayList<Integer> caclulateNonogramDimensions(ArrayList<Integer>[] topNumbers, ArrayList<Integer>[] leftNumbers){
-        ArrayList<Integer> topLeft = new ArrayList();
+    public static List<Integer> caclulateNonogramDimensions(List<Integer>[] topNumbers, List<Integer>[] leftNumbers){
+        List<Integer> topLeft = new ArrayList();
         int max_top = 0;
         for (int i = 0; i < topNumbers.length; i++) {
+
+        }
 
         return topLeft;
     }
 
-    public static BufferedImage drawNonogram(ArrayList<Integer>[] topNumbers, ArrayList<Integer>[] leftNumbers){
+    public static BufferedImage drawNonogram(List<Integer>[] topNumbers, List<Integer>[] leftNumbers){
         BufferedImage image = new BufferedImage(101, 101, BufferedImage.TYPE_INT_RGB);
         for (int i = 0; i < 101; i++) {
             for (int j = 0; j < 101; j++) {
