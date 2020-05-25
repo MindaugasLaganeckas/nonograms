@@ -24,7 +24,7 @@ public class Nonograms {
             topNumbers[i] = a;
         }
         for (int i = 0; i < numBlocksY; i++) {
-            ArrayList<Integer> a = new ArrayList<Integer>();
+            ArrayList<Integer> a = new ArrayList();
             int black = 0;
             for (int j = 0; j < numBlocksX; j++) {
                 if(solution[j][i] == 1){
@@ -40,6 +40,14 @@ public class Nonograms {
             }
             leftNumbers[i] = a;
         }
+    }
+
+    public static ArrayList<Integer> caclulateNonogramDimensions(ArrayList<Integer>[] topNumbers, ArrayList<Integer>[] leftNumbers){
+        ArrayList<Integer> topLeft = new ArrayList();
+        int max_top = 0;
+        for (int i = 0; i < topNumbers.length; i++) {
+
+        return topLeft;
     }
 
     public static BufferedImage drawNonogram(ArrayList<Integer>[] topNumbers, ArrayList<Integer>[] leftNumbers){
