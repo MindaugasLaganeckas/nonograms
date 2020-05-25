@@ -22,29 +22,32 @@ public class Library {
         int numBlocksX = 35;
         int numBlocksY = 35;
         int[][] solution = changeImage(img, numBlocksX, numBlocksY);
-        ArrayList<Integer>[] t = (ArrayList<Integer>[])new ArrayList[numBlocksX];
-        ArrayList<Integer>[] l = (ArrayList<Integer>[])new ArrayList[numBlocksY];
-        Nonograms.createNonogram(solution,numBlocksX,numBlocksY,t,l);
-        img = Nonograms.drawNonogram(t,l);
+        ArrayList<Integer>[] t = (ArrayList<Integer>[]) new ArrayList[numBlocksX];
+        ArrayList<Integer>[] l = (ArrayList<Integer>[]) new ArrayList[numBlocksY];
+        Nonograms.createNonogram(solution, numBlocksX, numBlocksY, t, l);
+        img = Nonograms.drawNonogram(t, l);
         File outfile = new File(output);
         ImageIO.write(img, extension, outfile);
-        test();
     }
 
-  public static int[][]  changeImage(BufferedImage img, final int numBlocksX, final int numBlocksY) {
-    // get image width and height
-    int width = img.getWidth();
-    int height = img.getHeight();
-    double blockSizeX = (double) width / numBlocksX;
-    double blockSizeY = (double) height / numBlocksY;
+    public static int[][] changeImage(BufferedImage img, final int numBlocksX, final int numBlocksY) {
+        // get image width and height
+        int width = img.getWidth();
+        int height = img.getHeight();
+        double blockSizeX = (double) width / numBlocksX;
+        double blockSizeY = (double) height / numBlocksY;
 
-    Triplet[][] blocks = new Triplet[numBlocksX][numBlocksY];
-    int[][] sizes = new int[numBlocksX][numBlocksY];
-
+        Triplet[][] blocks = new Triplet[numBlocksX][numBlocksY];
+        int[][] sizes = new int[numBlocksX][numBlocksY];
+        for (int i = 0; i < numBlocksX; i++) {
+            for (int j = 0; j < numBlocksY; j++) {
+                blocks[i][j] = new Triplet();
+            }
+        }
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 //get pixel value
-                int p = img.getRGB(i,j);
+                int p = img.getRGB(i, j);
                 Color c = ColorTransformations.pixelToColor(p);
                 int posX = (int) (i / blockSizeX);
                 int posY = (int) (j / blockSizeY);
@@ -59,8 +62,7 @@ public class Library {
                 try {
                     blocks[i][j] = blocks[i][j].divide(sizes[i][j]);
                     solution[i][j] = blocks[i][j].toBlackAndWhite(128);
-                } catch (Exception e)
-                {
+                } catch (Exception e) {
                     System.out.println(i + " " + j);
                 }
             }
@@ -71,50 +73,15 @@ public class Library {
                 //get pixel value
                 int posX = (int) (i / blockSizeX);
                 int posY = (int) (j / blockSizeY);
-                Color c = new Color(blocks[posX][posY].getR(),blocks[posX][posY].getG(),blocks[posX][posY].getB());
+                Color c = new Color(blocks[posX][posY].getR(), blocks[posX][posY].getG(), blocks[posX][posY].getB());
                 Color newColor = ColorTransformations.toBlackAndWhite(c, 128);
                 int newPixel = ColorTransformations.colorToPixel(newColor);
-                img.setRGB(i ,j, newPixel);
+                img.setRGB(i, j, newPixel);
             }
         }
         return solution;
     }
 
-    public static void test(){
-        int[][] solution = new int[4][4];
-        solution[0][0]=1;
-        solution[0][1]=1;
-        solution[0][2]=1;
-        solution[0][3]=1;
-        solution[1][0]=1;
-        solution[1][1]=0;
-        solution[1][2]=0;
-        solution[1][3]=1;
-        solution[2][0]=0;
-        solution[2][1]=1;
-        solution[2][2]=1;
-        solution[2][3]=0;
-        solution[3][0]=0;
-        solution[3][1]=1;
-        solution[3][2]=0;
-        solution[3][3]=0;
-        ArrayList<Integer>[] t = (ArrayList<Integer>[])new ArrayList[4];
-        ArrayList<Integer>[] l = (ArrayList<Integer>[])new ArrayList[4];
-        Nonograms.createNonogram(solution,4,4,t,l);
-        System.out.println("Top:");
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < t[i].size(); j++) {
-                System.out.print(t[i].get(j)+" ");
-            }
-            System.out.println(" ");
-        }
-        System.out.println("Left:");
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < l[i].size(); j++) {
-                System.out.print(l[i].get(j)+" ");
-            }
-            System.out.println(" ");
-        }
-    }
+
 
 }
