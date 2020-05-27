@@ -12,8 +12,11 @@ repositories {
 }
 
 dependencies {
+	compile project(':com.nonograms.core')
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compile group: 'com.google.guava', name: 'guava', version: '29.0-jre'
+
 }
 
 test {
