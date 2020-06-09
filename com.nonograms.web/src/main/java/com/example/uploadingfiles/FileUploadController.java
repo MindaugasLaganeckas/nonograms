@@ -70,9 +70,6 @@ public class FileUploadController {
 		final String newName = path.toFile().getCanonicalPath().replace("." + fileExtension, "_gen." + fileExtension);
 		com.nonograms.core.Library.main(new String[]{path.toFile().getCanonicalPath(), newName, fileExtension});
 
-		redirectAttributes.addFlashAttribute("message",
-				"You successfully uploaded " + file.getOriginalFilename() + "!");
-
 		return "redirect:/";
 	}
 

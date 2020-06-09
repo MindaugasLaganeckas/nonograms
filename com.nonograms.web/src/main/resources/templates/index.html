@@ -1,10 +1,6 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <body>
 
-	<div th:if="${message}">
-		<h2 th:text="${message}"/>
-	</div>
-
 	<div>
 		<form method="POST" enctype="multipart/form-data" action="/">
 			<table>
@@ -15,11 +11,13 @@
 	</div>
 
 	<div>
-		<ul>
-			<li th:each="file : ${files}">
-				<img th:src="${file}" />
-			</li>
-		</ul>
+		<table>
+			<tr>
+				<td th:each="file : ${files}">
+					<img th:src="${file}" style="width: 500px;"/>
+				</td>
+			</tr>
+		</table>
 	</div>
 
 </body>
