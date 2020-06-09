@@ -12,8 +12,8 @@
 
 	<div>
 		<table>
-			<tr>
-				<td th:each="file : ${files}">
+			<tr th:each="file : ${files}">
+				<td>
 					<img th:src="${file}" style="width: 500px;"/>
 				</td>
 			</tr>
