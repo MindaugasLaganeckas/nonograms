@@ -5,7 +5,7 @@ RUN gradle build --no-daemon
 
 FROM openjdk:8-jre-slim
 
-MAINTAINER Jonas Hecht
+MAINTAINER Mindaugas Laganeckas
 
 RUN mkdir /app
 
