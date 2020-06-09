@@ -12,9 +12,9 @@
 
 	<div>
 		<table>
-			<tr th:each="file : ${files}">
-				<td>
-					<img th:src="${file}" style="width: 500px;"/>
+			<tr>
+				<td th:each="file : ${files}">
+					<img th:src="${file}" style="height: 500px;"/>
 				</td>
 			</tr>
 		</table>
