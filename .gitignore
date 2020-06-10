@@ -25,5 +25,6 @@ hs_err_pid*
 .gradle
 build
 bin
-/com.nonograms.core/src/test/resources/out.jpg
+/com.nonograms.core/src/test/resources/nonogram.jpg
+/com.nonograms.core/src/test/resources/solution.jpg
 upload-dir/
