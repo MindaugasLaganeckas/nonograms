@@ -71,8 +71,10 @@ public class FileUploadController {
 		final Path path = storageService.load(fileName);
 
 		final String fileExtension = Files.getFileExtension(fileName);
-		final String newName = path.toFile().getCanonicalPath().replace("." + fileExtension, "_gen." + fileExtension);
-		com.nonograms.core.Library.main(new String[]{path.toFile().getCanonicalPath(), newName, fileExtension});
+		final String canonicalPath = path.toFile().getCanonicalPath();
+		final String nonogramOutput = canonicalPath.replace("." + fileExtension, "_gen." + fileExtension);
+		final String solutionOutput = canonicalPath.replace("." + fileExtension, "_solution." + fileExtension);
+		com.nonograms.core.Library.main(new String[]{canonicalPath, nonogramOutput, solutionOutput, fileExtension});
 
 		return "redirect:/";
 	}

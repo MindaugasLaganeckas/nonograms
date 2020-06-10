@@ -1,5 +1,7 @@
 package com.nonograms.core;
 
+import com.google.common.io.Files;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -15,17 +17,30 @@ public class Library {
     public static void main(String[] args) throws IOException {
 
         final String input = args[0];
-        final String output = args[1];
-        final String extension = args[2];
-
-        BufferedImage img = ImageIO.read(new File(input));
+        final String nonogramOutput = args[1];
+        final String solutionOutput = args[2];
+        final String extension = args[3];
         int numBlocksX = 35;
         int numBlocksY = 35;
+
+        createNonogramImage(input, nonogramOutput, solutionOutput, extension, numBlocksX, numBlocksY);
+    }
+
+    private static void createNonogramImage(String input, String nonogramOutput, String solutionOutput, String extension, int numBlocksX, int numBlocksY) throws IOException {
+        BufferedImage img = ImageIO.read(new File(input));
         int[][] solution = changeImage(img, numBlocksX, numBlocksY);
+
+        saveImage(solutionOutput, extension, img);
+
         ArrayList<Integer>[] t = (ArrayList<Integer>[]) new ArrayList[numBlocksX];
         ArrayList<Integer>[] l = (ArrayList<Integer>[]) new ArrayList[numBlocksY];
         Nonograms.createNonogram(solution, numBlocksX, numBlocksY, t, l);
         img = Nonograms.drawNonogram(t, l);
+
+        saveImage(nonogramOutput, extension, img);
+    }
+
+    private static void saveImage(String output, String extension, BufferedImage img) throws IOException {
         File outfile = new File(output);
         ImageIO.write(img, extension, outfile);
     }
