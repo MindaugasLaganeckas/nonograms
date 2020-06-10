@@ -2,6 +2,8 @@ package com.example.uploadingfiles;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import com.google.common.io.Files;
@@ -39,10 +41,12 @@ public class FileUploadController {
 	@GetMapping("/")
 	public String listUploadedFiles(Model model) throws IOException {
 
-		model.addAttribute("files", storageService.loadAll().map(
+		final List<String> filePathList = storageService.loadAll().map(
 				path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
 						"serveFile", path.getFileName().toString()).build().toUri().toString())
-				.collect(Collectors.toList()));
+				.collect(Collectors.toList());
+		Collections.sort(filePathList);
+		model.addAttribute("files", filePathList);
 
 		return "index";
 	}
